@@ -1,28 +1,23 @@
+const mongoose = require("mongoose");
 
-const mongoose = require('mongoose')
-// const { Schema } = mongoose;
+const blogSchema = new mongoose.Schema(
+  {
+    content: {
+      type: String,
+      required: true,
+      max: [250, "Tweet cannot be more than 250 character"],
+    },
 
-
-
-const blogSchema = new mongoose.Schema({
-  name: {
-    type : String,
-    require: true
+    hashtags : [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref :'Hastag'
+      }
+    ]
   },
-  title:String,
-  comments:[
-    {
-        
-            type:mongoose.Schema.Types.ObjectId,
-            ref: 'Comment'
-        
-    }
-  ]
-}, {timestamps:true});
+  { timestamps: true }
+);
 
+const Tweet = new mongoose.model("Tweet", blogSchema);
 
-
-const Tweet = new mongoose.model('Tweet', blogSchema)
-
-
-module.exports = Tweet
+module.exports = Tweet;

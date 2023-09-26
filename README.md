@@ -16,4 +16,4 @@
         - Last 10 tweet fromuser
 
 - Pagination on tweets
-- user Auth        
+- user Auth using passport JS
