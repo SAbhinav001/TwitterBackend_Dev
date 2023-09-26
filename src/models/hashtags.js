@@ -6,6 +6,12 @@ const hastagSchema = new mongoose.Schema({
         required : true,
         unique : true
     },
+    tweets : [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref :'Tweet'
+        }
+      ]
 },{timestamps : true})
 
 
