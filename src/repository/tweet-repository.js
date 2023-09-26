@@ -1,33 +1,10 @@
 const Tweet = require("../models/tweet");
+const Crudrepository = require("./crud-repo")
 
-class TweetRepository {
-
-  async create(data) {
-    try {
-      const tweet = await Tweet.create(data);
-      return tweet;
-    } catch (error) {
-      console.log(error);
+class TweetRepository extends Crudrepository{
+    constructor(){
+      super(Tweet)
     }
-  }
-
-  async get(id){
-    try {
-        const tweet = await Tweet.findById(id);
-        return tweet;
-      } catch (error) {
-        console.log(error);
-      }
-  }
-
-  async destroy(id){
-    try {
-        const tweet = await Tweet.findByIdAndRemove(data);
-        return tweet
-      } catch (error) {
-        console.log(error);
-      }
-  }
 }
 
 module.exports = TweetRepository
