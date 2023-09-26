@@ -8,8 +8,8 @@ class TweetService{
 
     async create(data){
         const content = data.content
-        const tags = content.match(/#[a-zA-Z0-9_]+/g).map((tags)=>tags.substring(1)) // this regex extracts hastags
-        console.log(tags)
+        let tags = content.match(/#[a-zA-Z0-9_]+/g)  // this regex extracts hastags
+        tags = tags.map((tags)=>tags.substring(1).toLowerCase())
         const tweet = await this.tweetRepository.create(data)
         //todo create hastag if it doesnt exist
         let alreadyPresenttags = await this.hashtagrepository.findByName(tags)
@@ -26,9 +26,9 @@ class TweetService{
         tags.save()
        })
 
+       
         return tweet
-    
-        return tweet
+
     }
 }
 
