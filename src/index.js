@@ -1,7 +1,6 @@
 const express = require("express")
 const connect = require('./config/database')
 const apiroutes = require("./routes/index")
-
 const app = express()
 
 
@@ -17,4 +16,5 @@ app.listen(3019, async()=>{
     await connect()
     console.log("Db connected")
 
+  
 })

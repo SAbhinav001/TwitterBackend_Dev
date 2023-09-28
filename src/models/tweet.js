@@ -6,7 +6,14 @@ const blogSchema = new mongoose.Schema(
       type: String,
       required: true,
       max: [250, "Tweet cannot be more than 250 character"],
-    }
+    },
+    likes :[
+      {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Like'
+      }
+    ]
+
   },
   { timestamps: true }
 );
