@@ -22,7 +22,7 @@ class LikeService {
                 onModel :modelName,
                 likeable : modelId
             })
-            console.log(existLike)
+         //   console.log(existLike)
             if(existLike){
                  likeable.likes.pull(existLike.id)
                await likeable.save()
@@ -35,6 +35,7 @@ class LikeService {
                     onModel :modelName,
                     likeable : modelId
                 })
+                console.log("created")
                 likeable.likes.push(newlike)
                 await likeable.save()
                 var isAdded = true
