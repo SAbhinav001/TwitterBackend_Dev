@@ -13,7 +13,8 @@ class LikeService {
             }
             else if(modelName == "Comment"){
                     //to do
-                    var likeable = await this.commentRepository.get(modelId)
+                    //var likeable = await this.commentRepository.get(modelId)
+                    //we didnt added likes prp in comment model
             }
             else{
                     console.log("Errror in modelName")
