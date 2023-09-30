@@ -1,9 +1,10 @@
-const {TweetRepository, LikeRepository} = require("../repository/index")
+const {TweetRepository, LikeRepository,CommentRepository} = require("../repository/index")
 
 class LikeService {
     constructor() {
         this.tweetRepository = new TweetRepository()
         this.likeRepository = new LikeRepository()
+        this.commentRepository = new CommentRepository()
     }
 
     async toggleLike(modelId, modelName, userId){   //api/v1/likes/toogle?id=modelId&type=tweet 
@@ -12,6 +13,7 @@ class LikeService {
             }
             else if(modelName == "Comment"){
                     //to do
+                    var likeable = await this.commentRepository.get(modelId)
             }
             else{
                     console.log("Errror in modelName")
