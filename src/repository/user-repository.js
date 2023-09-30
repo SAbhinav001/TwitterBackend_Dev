@@ -5,6 +5,11 @@ class UserRepository extends Crudrepository{
     constructor(){
         super(User)
     } 
+
+    async findBy(data){
+        const user = await User.findOne(data)
+        return user
+    }
 }
 
 module.exports = UserRepository

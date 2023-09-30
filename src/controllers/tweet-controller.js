@@ -7,7 +7,7 @@ const createTweet = async(req,res)=>{
                 const tweet = await tweetService.create(req.body)
                 console.log(tweet)
                 return res.status(200).json({
-                    message: "sucessfully fetch  tweet",
+                    message: "sucessfully create  tweet",
                     succes :true,
                     data : tweet,
                     error : {}
@@ -15,7 +15,7 @@ const createTweet = async(req,res)=>{
                 })
             } catch (error) {
                 return res.status(500).json({
-                    message: "failed to fetch  tweet",
+                    message: "failed to create  tweet",
                     succes :false,
                     data : {},
                     err : error
