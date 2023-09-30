@@ -8,7 +8,7 @@ class LikeService {
 
     async toggleLike(modelId, modelName, userId){   //api/v1/likes/toogle?id=modelId&type=tweet 
             if(modelName == "Tweet"){
-                    var likeable = await this.tweetRepository.get(modelId)
+                    var likeable = await this.tweetRepository.find(modelId)
             }
             else if(modelName == "Comment"){
                     //to do
@@ -35,7 +35,6 @@ class LikeService {
                     onModel :modelName,
                     likeable : modelId
                 })
-                console.log("created")
                 likeable.likes.push(newlike)
                 await likeable.save()
                 var isAdded = true
