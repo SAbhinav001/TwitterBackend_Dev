@@ -3,8 +3,8 @@ const tweetService = new TweetService();
 
 const upload = require("../config/file-upload-S3-config");
 
-//cgane it to for multiple files
-const singleUploader = upload.array("image",10);
+
+const singleUploader = upload.single("image");
 
 const createTweet = async (req, res) => {
     try {
@@ -12,19 +12,12 @@ const createTweet = async (req, res) => {
             if (err) {
                 return res.status(500).json({ message: "something went wrong" });
             }
-            console.log("img url is", req.files);
+            console.log("img url is", req.file);
+            console.log(req.body)
 
             const payload = {...req.body};
-          
-            //if there is multiple img files 
-            if(req.files){
-              const imgId =[]
-              req.files.forEach(obj => {
-                imgId.push(obj.location)
-              });
-              payload.image = imgId
-            }
-
+           console.log(payload)
+          payload.image = [req.file.location]
             const tweet = await tweetService.create(payload);
             return res.status(200).json({
                 message: "sucessfully create  tweet",

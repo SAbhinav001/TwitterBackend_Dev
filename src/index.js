@@ -1,15 +1,18 @@
 const express = require("express")
 const connect = require('./config/database')
+const cors= require('cors')
 const apiroutes = require("./routes/index")
 const passport = require("passport")
 const {passwordAuth} = require("./config/passport-jwt")
 
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use('/api', apiroutes)
+
 app.use(passport.initialize())
 passwordAuth(passport)
 
@@ -17,7 +20,7 @@ passwordAuth(passport)
 app.listen(3019, async()=>{
    
     console.log('server started')
-    await connect()
+     await connect()
     console.log("Db connected")
 
   

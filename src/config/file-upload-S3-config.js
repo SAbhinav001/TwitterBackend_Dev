@@ -19,9 +19,11 @@ const upload = multer({
     s3: s3,
     bucket: process.env.BUCKET_NAME,
     metadata: function (req, file, cb) {
+     
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
+    
       cb(null, Date.now().toString());
     },
   }),
